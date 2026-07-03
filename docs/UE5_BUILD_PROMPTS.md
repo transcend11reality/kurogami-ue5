@@ -114,7 +114,7 @@ Two mechanisms:
   Idempotent (recreate the sequence asset). Verify: py_compile clean; dry-run prints the keyframe
   timeline (time, location, rotation, focal length) matching the config vantage count.
 
-- [ ] **A7 Movie Render Queue preset + render automation.**
+- [x] **A7 Movie Render Queue preset + render automation.**
   Create an MRQ preset config (4K, high anti-aliasing sample count, motion blur, Lumen; a
   Path Tracer variant noted as optional) that outputs an image sequence to `Saved/Render/`. Add
   `Scripts/render_cinematic.sh`: runs MRQ headless from the CLI against `KG_Showpiece`, then
