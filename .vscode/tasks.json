@@ -1,0 +1,13 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Serve web player",
+      "type": "shell",
+      "command": "node web/server.js",
+      "problemMatcher": [],
+      "presentation": { "reveal": "always", "panel": "dedicated" },
+      "detail": "Runs the two-tier browser player on http://localhost:8080"
+    }
+  ]
+}

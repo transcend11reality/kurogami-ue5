@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Kurogami · Showpiece</title>
+<style>
+  :root{ --gold:#F0C24A; --cyan:#7FE9FF; }
+  *{ margin:0; box-sizing:border-box; }
+  html,body{ height:100%; background:#05070b; color:#eaf0f2; font-family:system-ui,sans-serif; }
+  .wrap{ min-height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:18px; padding:24px; }
+  h1{ font-size:22px; letter-spacing:.18em; color:var(--gold); font-weight:700; }
+  .stage{ width:min(1100px,96vw); aspect-ratio:16/9; background:#0b1016; border:1px solid rgba(127,233,255,.25);
+    border-radius:14px; overflow:hidden; position:relative; }
+  video, iframe#stream{ width:100%; height:100%; display:block; border:0; }
+  iframe#stream{ display:none; }
+  .bar{ display:flex; gap:10px; }
+  button{ font-family:inherit; font-size:13px; color:#0b1016; background:var(--cyan); border:0; border-radius:8px;
+    padding:9px 16px; cursor:pointer; font-weight:700; }
+  button.ghost{ background:transparent; color:var(--cyan); border:1px solid rgba(127,233,255,.4); }
+  .note{ font-size:12px; color:#7a8896; max-width:1100px; text-align:center; line-height:1.6; }
+  code{ color:var(--gold); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>影 KUROGAMI · SHOWPIECE</h1>
+  <div class="stage">
+    <!-- Tier 1: pre-rendered cinematic (works everywhere, near-zero cost) -->
+    <video id="cinematic" controls playsinline poster="poster.jpg">
+      <source src="cinematic.mp4" type="video/mp4"/>
+    </video>
+    <!-- Tier 2: interactive Pixel Streaming (GPU-backed, gated) -->
+    <iframe id="stream" allow="autoplay; fullscreen; gamepad"></iframe>
+  </div>
+  <div class="bar">
+    <button id="playBtn">▶ Play cinematic</button>
+    <button id="liveBtn" class="ghost">◈ Launch interactive session</button>
+  </div>
+  <p class="note">
+    Tier 1 is the pre-rendered cinematic (render it in UE with Movie Render Queue, drop the MP4 at
+    <code>web/public/cinematic.mp4</code>). Tier 2 embeds an interactive Pixel Streaming session:
+    set <code>STREAM_URL</code> below to your signalling server or managed provider URL. Interactive
+    sessions use a cloud GPU per viewer, so gate access and autoscale to zero.
+  </p>
+</div>
+<script>
+  // Point this at your Pixel Streaming signalling/player URL (self-hosted or managed provider).
+  var STREAM_URL = ""; // e.g. "https://your-pixelstreaming-host/"
+  var video = document.getElementById("cinematic");
+  var stream = document.getElementById("stream");
+  document.getElementById("playBtn").addEventListener("click", function(){ video.play(); });
+  document.getElementById("liveBtn").addEventListener("click", function(){
+    if(!STREAM_URL){ alert("Set STREAM_URL in player.html to your Pixel Streaming host first. Until then, the cinematic is the showpiece."); return; }
+    video.pause(); video.style.display = "none";
+    stream.src = STREAM_URL; stream.style.display = "block";
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,8 @@
+{
+  // Also install "Claude Code" from the Extensions marketplace (search: Claude Code).
+  "recommendations": [
+    "esbenp.prettier-vscode",
+    "ms-vscode.cpptools",
+    "ms-vscode.live-server"
+  ]
+}

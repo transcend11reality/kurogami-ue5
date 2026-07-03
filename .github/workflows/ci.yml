@@ -1,0 +1,22 @@
+name: CI (non-GPU)
+on: [push, pull_request]
+jobs:
+  web:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 20 }
+      - run: cd web && npm install --no-audit --no-fund
+      - run: node -e "const fs=require('fs');process.exit(fs.existsSync('web/server.js')?0:1)"
+  hygiene:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: no em dashes in text sources
+        run: |
+          if grep -rlP "\x{2014}" --include="*.md" --include="*.html" --include="*.js" --include="*.txt" . ; then
+            echo "em dash found"; exit 1;
+          else echo "clean"; fi
+# Note: cooking/packaging the UE build needs a self-hosted runner with a GPU.
+# That is intentionally not part of CI here.

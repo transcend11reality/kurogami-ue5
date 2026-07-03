@@ -1,0 +1,10 @@
+{
+  "name": "Kurogami UE5 (web + docs, no GPU)",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:20",
+  "postCreateCommand": "cd web && npm install || true",
+  "forwardPorts": [8080],
+  "portsAttributes": { "8080": { "label": "Kurogami web player" } },
+  "customizations": {
+    "vscode": { "extensions": ["ms-vscode.cpptools", "esbenp.prettier-vscode"] }
+  }
+}

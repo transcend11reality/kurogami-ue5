@@ -1,0 +1,18 @@
+; MERGE these into your UE project's Config/DefaultEngine.ini (do not overwrite the file).
+; Nanite and Lumen are UE5 defaults; these make the intent explicit and prep Pixel Streaming.
+
+[/Script/Engine.RendererSettings]
+r.DynamicGlobalIlluminationMethod=1   ; Lumen
+r.ReflectionMethod=1                  ; Lumen reflections
+r.Shadow.Virtual.Enable=1             ; Virtual Shadow Maps
+r.Nanite=1
+
+; --- Pixel Streaming (enable the "Pixel Streaming" plugin in the editor first) ---
+; When running the packaged app, pass on the command line:
+;   -PixelStreamingURL=ws://SIGNALLING_HOST:8888 -RenderOffScreen -Unattended
+; For a browser-embeddable experience, run Epic's signalling server (see web/README.md)
+; or use a managed provider, and point web/public/player.html at it.
+
+[SystemSettings]
+; Bound the frame cost when streaming (tune on the GPU host):
+; t.MaxFPS=60

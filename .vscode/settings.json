@@ -1,0 +1,11 @@
+{
+  "files.eol": "\n",
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "files.exclude": {
+    "**/Binaries": true,
+    "**/Intermediate": true,
+    "**/DerivedDataCache": true,
+    "**/Saved": true
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "name": "kurogami-ue5-web",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Kurogami browser player: pre-rendered cinematic + Pixel Streaming slot. Runs in Codespaces (no GPU).",
+  "scripts": {
+    "start": "node server.js"
+  }
+}
