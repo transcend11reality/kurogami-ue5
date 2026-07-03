@@ -123,7 +123,7 @@ Two mechanisms:
   checks for ffmpeg and the uproject and fails loudly if missing; it does NOT run the render itself
   (that is the human GPU step).
 
-- [ ] **A8 Config merge script.**
+- [x] **A8 Config merge script.**
   `Scripts/merge_config.py`: idempotently merge the sections in `Config/DefaultEngine.ini.additions.txt`
   into the project `Config/DefaultEngine.ini` (create it if the project exists; append missing keys,
   never duplicate a section). Ensure the Python + MRQ plugins are enabled in `Kurogami.uproject`.
