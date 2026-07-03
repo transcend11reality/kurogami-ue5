@@ -92,7 +92,7 @@ Two mechanisms:
   Verify: py_compile clean; dry-run mode (`--plan` flag that prints the spawn list without importing
   unreal) lists the right count of actors from the layout.
 
-- [ ] **A4 Dusk lighting rig script.**
+- [x] **A4 Dusk lighting rig script.**
   `Scripts/Python/02_lighting.py`: Directional Light at the dusk pitch/yaw/temperature from config,
   Sky Atmosphere, Sky Light (captured), Exponential Height Fog with Volumetric Fog on, and a
   Post-Process Volume (unbound) setting exposure, moderate bloom, and explicit Lumen GI + reflections.
