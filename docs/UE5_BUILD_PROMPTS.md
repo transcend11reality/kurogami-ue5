@@ -130,7 +130,7 @@ Two mechanisms:
   Verify: py_compile clean; running it twice produces no second copy of any section (test against a
   fixture ini in `Scripts/tests/`).
 
-- [ ] **A9 Asset license manifest.**
+- [x] **A9 Asset license manifest.**
   `docs/ASSET_MANIFEST.md`: a table tracking every Fab/Megascans/original asset (name, source, license,
   date, where used) with the boundary reminder that watches/jets/brands stay original or clear homages,
   never trademarked reproductions. Seed it with headers and one example row. Verify: no em dashes;
