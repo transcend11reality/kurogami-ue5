@@ -85,7 +85,7 @@ Two mechanisms:
   in the plan. Verify: layout JSON parses and every building has all fields. If the source is absent,
   STOP and ask for it.
 
-- [ ] **A3 Level blockout script.**
+- [x] **A3 Level blockout script.**
   `Scripts/Python/01_blockout.py`: read the layout, spawn a ground plane, one Nanite box per building
   at its coordinate scaled to its height, the road grid as flat meshes, and the bay water plane. Tag
   everything `KG_blockout_*` and clear that set first (idempotent). No materials yet (default grey).

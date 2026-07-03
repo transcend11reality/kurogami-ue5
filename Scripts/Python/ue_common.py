@@ -19,7 +19,13 @@ except ImportError:
     HAS_UNREAL = False
 
 _THIS_DIR = os.path.dirname(os.path.abspath(__file__))
+REPO_ROOT = os.path.dirname(os.path.dirname(_THIS_DIR))
 CONFIG_PATH = os.path.join(_THIS_DIR, "build_config.json")
+
+
+def repo_path(*parts):
+    """Join path parts onto the repo root (the folder containing Kurogami.uproject)."""
+    return os.path.join(REPO_ROOT, *parts)
 
 
 def log(message):
@@ -67,9 +73,9 @@ def clear_tagged_actors(prefix):
 
 
 def spawn_tagged_actor(actor_class, label, location, rotation=(0.0, 0.0, 0.0)):
-    """Spawn an actor at location/rotation and label it so clear_tagged_actors can find it later.
-
-    location and rotation are 3-tuples. Returns the spawned actor, or None in dry-run mode.
+    """Spawn an actor of actor_class (a Blueprint or native Class, e.g. unreal.DirectionalLight,
+    unreal.CineCameraActor) at location/rotation and label it so clear_tagged_actors can find it
+    later. location and rotation are 3-tuples. Returns the spawned actor, or None in dry-run mode.
     """
     if not HAS_UNREAL:
         log("spawn_tagged_actor(%s @ %s): skipped, no unreal module (dry-run)" % (label, location))
@@ -78,5 +84,27 @@ def spawn_tagged_actor(actor_class, label, location, rotation=(0.0, 0.0, 0.0)):
     loc = unreal.Vector(location[0], location[1], location[2])
     rot = unreal.Rotator(rotation[0], rotation[1], rotation[2])
     actor = actor_subsystem.spawn_actor_from_class(actor_class, loc, rot)
-    actor.set_actor_label(label)
+    actor.set_actor_label(label, True)
+    return actor
+
+
+def spawn_tagged_mesh_actor(asset_path, label, location, rotation=(0.0, 0.0, 0.0), scale=(1.0, 1.0, 1.0)):
+    """Load a StaticMesh (or other Factory/Archetype/Asset) at asset_path and spawn it as an actor
+    with the mesh already assigned, via EditorActorSubsystem.spawn_actor_from_object. Use this for
+    static meshes (asset_path like '/Engine/BasicShapes/Cube.Cube'); use spawn_tagged_actor for
+    native/Blueprint actor classes instead. Returns the spawned actor, or None in dry-run mode.
+    """
+    if not HAS_UNREAL:
+        log("spawn_tagged_mesh_actor(%s @ %s): skipped, no unreal module (dry-run)" % (label, location))
+        return None
+    obj = unreal.EditorAssetLibrary.load_asset(asset_path)
+    if obj is None:
+        log_warning("spawn_tagged_mesh_actor(%s): could not load asset %s" % (label, asset_path))
+        return None
+    actor_subsystem = unreal.get_editor_subsystem(unreal.EditorActorSubsystem)
+    loc = unreal.Vector(location[0], location[1], location[2])
+    rot = unreal.Rotator(rotation[0], rotation[1], rotation[2])
+    actor = actor_subsystem.spawn_actor_from_object(obj, loc, rot)
+    actor.set_actor_label(label, True)
+    actor.set_actor_scale3d(unreal.Vector(scale[0], scale[1], scale[2]))
     return actor
