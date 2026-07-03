@@ -3,23 +3,49 @@
     "id": "brickell_dusk",
     "name": "Space / Sophia Nexus (Brickell skyline at dusk)",
     "layout_data_path": "Content/Data/brickell_layout.json",
-    "layout_source_note": "Filled by task A2 from the web build's brickell-city.html. Empty until that source is provided to this repo."
+    "layout_source_note": "Filled in by task A2 from the web build's brickell-city.html (provided 2026-07-03). Landmarks, road grid, and the bay water polygon are extracted at a x100 scale (source units to UE centimeters); see the layout file's own _source/_note fields for what is and is not included."
   },
   "coordinate_units": "centimeters (Unreal Engine default)",
   "palette": {
-    "obsidian": null,
-    "navy": null,
-    "teal": null,
-    "gold": null,
-    "violet": null,
-    "crimson": null,
-    "cyan": null
+    "obsidian": "#0B0E14",
+    "navy": "#111827",
+    "teal": "#1FB6A8",
+    "gold": "#F0C24A",
+    "violet": "#8B5CF6",
+    "crimson": "#DC2626",
+    "cyan": "#7FE9FF"
   },
   "sun": {
-    "pitch_deg": null,
-    "yaw_deg": null,
-    "temperature_kelvin": null,
-    "intensity_lux": null
+    "pitch_deg": -8.0,
+    "yaw_deg": 200.0,
+    "temperature_kelvin": 3200.0,
+    "intensity_lux": 2.5,
+    "note": "Deliberate dusk rebuild per docs/UE5_SHOWPIECE_PLAN.md section 0 (a rebuild, not a port); brickell-city.html itself renders a bright daytime sky, which is intentionally not carried over."
   },
-  "camera_vantage_points": []
+  "camera_vantage_points": [
+    {
+      "name": "establishing_wide",
+      "time_sec": 0.0,
+      "location": [-26000.0, -26000.0, 22000.0],
+      "rotation": [-27.3, 40.2, 0.0],
+      "focal_length_mm": 24.0,
+      "note": "Elevated far corner, looking across the skyline and bay toward Brickell City Centre."
+    },
+    {
+      "name": "hero_push_in",
+      "time_sec": 40.0,
+      "location": [6000.0, 3000.0, 6000.0],
+      "rotation": [16.7, 53.1, 0.0],
+      "focal_length_mm": 50.0,
+      "note": "Push toward Four Seasons Miami, the tallest tower (150m) on the map."
+    },
+    {
+      "name": "slow_reveal",
+      "time_sec": 90.0,
+      "location": [6000.0, -14000.0, 4500.0],
+      "rotation": [-0.5, 121.0, 0.0],
+      "focal_length_mm": 35.0,
+      "note": "Settles on Brickell City Centre, the hub/anchor of the region."
+    }
+  ]
 }

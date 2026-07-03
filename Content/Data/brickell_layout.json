@@ -1,0 +1,111 @@
+{
+  "_source": "Extracted from the web build's brickell-city.html (task A2). Coordinates converted from that file's Three.js source units (approximately meters, matching its own '1KM DEMO' scale hint) to UE centimeters via a x100 scale factor.",
+  "_note": "This is a rebuild, not a port (see CLAUDE.md and docs/UE5_SHOWPIECE_PLAN.md section 0): only the seven real named landmarks and the fixed road/water grid are extracted here, since those are deterministic in the source. brickell-city.html also procedurally scatters generic filler buildings across the block grid using Math.random() at load time, so there is no fixed list of those to extract faithfully; task B2 (Megascans + art pass) fills the blocks with Fab/Megascans assets by eye instead, using this road grid and these landmarks as the anchors.",
+  "_water_note": "The source has two water bodies (a bay and a river). This schema's 'water' field is a single bay polygon per task A2's spec; the smaller river channel along z<-25000 is not encoded here.",
+  "buildings": [
+    {
+      "id": "brickell_city_centre",
+      "x": 0.0,
+      "y": -4000.0,
+      "footprint": {"width": 2600.0, "depth": 2600.0},
+      "height": 8800.0,
+      "kind": "glass",
+      "note": "Open-air luxury mall and towers, the anchor of Brickell (701 S Miami Ave)."
+    },
+    {
+      "id": "brickell_city_centre_annex_a",
+      "x": 3400.0,
+      "y": -4400.0,
+      "footprint": {"width": 2000.0, "depth": 2000.0},
+      "height": 6336.0,
+      "kind": "glass2",
+      "note": "Secondary tower in the City Centre complex."
+    },
+    {
+      "id": "brickell_city_centre_annex_b",
+      "x": -3000.0,
+      "y": -3000.0,
+      "footprint": {"width": 1800.0, "depth": 1800.0},
+      "height": 5280.0,
+      "kind": "glass",
+      "note": "Secondary tower in the City Centre complex."
+    },
+    {
+      "id": "mary_brickell_village",
+      "x": -8600.0,
+      "y": -3000.0,
+      "footprint": {"width": 2600.0, "depth": 2600.0},
+      "height": 1800.0,
+      "kind": "brick",
+      "note": "Low-rise dining and nightlife block just west (901 S Miami Ave)."
+    },
+    {
+      "id": "four_seasons_miami",
+      "x": 12000.0,
+      "y": 11000.0,
+      "footprint": {"width": 2600.0, "depth": 2600.0},
+      "height": 15000.0,
+      "kind": "glass2",
+      "note": "One of the tallest towers on Brickell Avenue, south end (1435 Brickell Ave)."
+    },
+    {
+      "id": "dua_miami",
+      "x": -3000.0,
+      "y": 7000.0,
+      "footprint": {"width": 2600.0, "depth": 2600.0},
+      "height": 9200.0,
+      "kind": "glass",
+      "note": "S Miami Avenue tower (1300 S Miami Ave)."
+    },
+    {
+      "id": "brickell_metrorail",
+      "x": -15000.0,
+      "y": 12000.0,
+      "footprint": {"width": 2600.0, "depth": 2600.0},
+      "height": 1400.0,
+      "kind": "concrete",
+      "note": "Metrorail transit hub on the southwest edge."
+    }
+  ],
+  "landmarks_without_geometry": [
+    {
+      "id": "simpson_park",
+      "x": -15000.0,
+      "y": 18000.0,
+      "kind": "park",
+      "note": "Rare hammock green space, the map's only park. Ground plane only in the source, no building mass; add Fab foliage in task B2."
+    },
+    {
+      "id": "brickell_ave_bridge",
+      "x": 15000.0,
+      "y": -25000.0,
+      "kind": "bridge",
+      "note": "Drawbridge crossing the Miami River into downtown. Bespoke deck/pillar geometry in the source, not a simple box; model separately in task B2."
+    }
+  ],
+  "roads": [
+    {"id": "ns_-240", "polyline": [[-24000.0, -28000.0], [-24000.0, 28000.0]], "width": 1500.0},
+    {"id": "ns_-160", "polyline": [[-16000.0, -28000.0], [-16000.0, 28000.0]], "width": 1500.0},
+    {"id": "ns_-80", "polyline": [[-8000.0, -28000.0], [-8000.0, 28000.0]], "width": 1500.0},
+    {"id": "ns_0", "polyline": [[0.0, -28000.0], [0.0, 28000.0]], "width": 1500.0},
+    {"id": "ns_80", "polyline": [[8000.0, -28000.0], [8000.0, 28000.0]], "width": 1500.0},
+    {"id": "ns_160", "polyline": [[16000.0, -28000.0], [16000.0, 28000.0]], "width": 1500.0},
+    {"id": "ns_200", "polyline": [[20000.0, -28000.0], [20000.0, 28000.0]], "width": 1500.0},
+    {"id": "ew_-240", "polyline": [[-28000.0, -28000.0], [28000.0, -28000.0]], "width": 1500.0},
+    {"id": "ew_-160", "polyline": [[-28000.0, -20000.0], [28000.0, -20000.0]], "width": 1500.0},
+    {"id": "ew_-80", "polyline": [[-28000.0, -12000.0], [28000.0, -12000.0]], "width": 1500.0},
+    {"id": "ew_0", "polyline": [[-28000.0, -4000.0], [28000.0, -4000.0]], "width": 1500.0},
+    {"id": "ew_80", "polyline": [[-28000.0, 4000.0], [28000.0, 4000.0]], "width": 1500.0},
+    {"id": "ew_160", "polyline": [[-28000.0, 12000.0], [28000.0, 12000.0]], "width": 1500.0},
+    {"id": "ew_200", "polyline": [[-28000.0, 16000.0], [28000.0, 16000.0]], "width": 1500.0}
+  ],
+  "water": {
+    "polygon": [
+      [19600.0, -58000.0],
+      [89600.0, -58000.0],
+      [89600.0, 58000.0],
+      [19600.0, 58000.0]
+    ],
+    "note": "Biscayne Bay, east of the WATER_X boundary in the source. The Miami River (a second, smaller water body along the south edge) is not included; see _water_note."
+  }
+}

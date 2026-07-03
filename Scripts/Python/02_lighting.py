@@ -29,6 +29,9 @@ NEON_TAG = "KG_neon_"
 # Dusk defaults, used only when build_config.json's sun/palette fields are still the null
 # placeholders from task A1 (task A2 fills them in from the production plan's brand palette).
 DEFAULT_SUN = {"pitch_deg": -8.0, "yaw_deg": 200.0, "temperature_kelvin": 3200.0, "intensity_lux": 2.5}
+# Neon signage reads as accent color, not the dark brand base (obsidian/navy/teal); pick these
+# three palette keys by name, not "however many values happen to be first in the palette dict".
+NEON_ACCENT_PALETTE_KEYS = ["cyan", "gold", "violet"]
 DEFAULT_NEON_COLORS = ["#7FE9FF", "#F0C24A", "#8B5CF6"]  # cyan, gold, violet accents
 
 # Brickell dusk neon accent placements: (label_suffix, location_cm, intensity_candela)
@@ -66,11 +69,11 @@ def resolve_sun(config):
 
 def resolve_neon_colors(config):
     palette = config.get("palette", {})
-    colors = [v for v in palette.values() if v]
-    if not colors:
+    colors = [palette[key] for key in NEON_ACCENT_PALETTE_KEYS if palette.get(key)]
+    if len(colors) < len(NEON_ACCENT_PALETTE_KEYS):
         kg.log_warning(
-            "build_config.json palette is not populated yet (task A2 fills it in); using "
-            "documented default accent colors: %s" % DEFAULT_NEON_COLORS
+            "build_config.json palette is missing one or more of %s (task A2 fills these in); "
+            "using documented default accent colors: %s" % (NEON_ACCENT_PALETTE_KEYS, DEFAULT_NEON_COLORS)
         )
         colors = DEFAULT_NEON_COLORS
     return colors

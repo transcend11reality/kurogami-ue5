@@ -76,7 +76,7 @@ Two mechanisms:
   Verify: `python3 -m py_compile Scripts/Python/*.py` is clean; `build_config.json` parses with
   `python3 -c "import json;json.load(open('Scripts/Python/build_config.json'))"`.
 
-- [ ] **A2 [HUMAN GATE dependency] Region layout data.**
+- [x] **A2 [HUMAN GATE dependency] Region layout data.**
   The Brickell landmark coordinates, road grid, and building footprints live in the web build file
   `brickell-city.html`, which is NOT in this repo. Either drop `brickell-city.html` into
   `Scripts/Python/source/`, or paste the coordinate/landmark block. Once present, extract it into
