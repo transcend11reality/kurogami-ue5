@@ -159,15 +159,27 @@ Two mechanisms:
 - [ ] **B5 [HUMAN GATE] Ship + QA.** Run the web player, watch the cinematic end to end on desktop and
   phone, confirm the boundaries read correctly (no trademarked repros on screen), and push.
 
-## PHASE C: Milestone 2+ (deferred, prompts stubbed for later)
+## PHASE C: Milestone 2+ (deferred, prompts stubbed for later; NOT eligible for the driver loop
+## until Milestone 1 ships, see CLAUDE.md "Keep the sequencing" rule and docs/UE5_SHOWPIECE_PLAN.md
+## section 1: cinematic first, everything below only after that, and Pixel Streaming only if it
+## is ever actually needed)
 
-- [ ] **C1 DataTables from web build.** Translate `data/dialogue.json` and `data/quests.json` (from the
-  module build) into UE DataTable CSVs, dialogue-tree and quest-chain schemas, cosmetic rewards only.
-- [ ] **C2 C++ conversion + player controller.** Add a C++ module (matching the `Kurogami` name),
-  Enhanced Input, third-person trailing camera per the web build feel.
-- [ ] **C3 NPCs + interaction.** MetaHuman placement, proximity interaction, wire the honest
-  educational NPCs (Scientist on oyster nitrogen, Analyst on container leasing + fraud warning).
-- [ ] **C4 Game loops.** Oyster grow-harvest and container pack-ship as Blueprint actors, cosmetic
-  score only.
-- [ ] **C5 Pixel Streaming (only if a live interactive demo is needed).** Package, stand up one
-  gated instance, autoscale to zero, keep the cinematic as the fallback.
+- [ ] **C1 [BLOCKED: missing dependency] DataTables from web build.** Translate `data/dialogue.json`
+  and `data/quests.json` (from the separate module-build repo, not this one) into UE DataTable CSVs,
+  dialogue-tree and quest-chain schemas, cosmetic rewards only. Do not start until those two files are
+  provided into this repo.
+- [ ] **C2 [HUMAN GATE] C++ conversion + player controller.** Requires G0 done first (needs the real
+  `Source/` a human generates via the editor; CLAUDE.md forbids fabricating `Source/`). Add a C++
+  module (matching the `Kurogami` name), Enhanced Input, third-person trailing camera per the web
+  build feel.
+- [ ] **C3 [HUMAN GATE] NPCs + interaction.** Requires G0 and Content done first. MetaHuman placement,
+  proximity interaction, wire the honest educational NPCs (Scientist on oyster nitrogen, Analyst on
+  container leasing + fraud warning).
+- [ ] **C4 [HUMAN GATE] Game loops.** Requires G0 done first; Blueprint graph authoring is editor
+  work, not headless Python (same reasoning as A5's material graphs). Oyster grow-harvest and
+  container pack-ship as Blueprint actors, cosmetic score only.
+- [ ] **C5 [HUMAN GATE, DEFERRED] Pixel Streaming (only if a live interactive demo is ever needed).**
+  Explicitly out of scope for now: the user has chosen Tailscale + Screen Sharing to the Mac mini for
+  personal access instead, and the production plan sequences this after the cinematic ships. Do not
+  start this without a fresh, explicit go-ahead. Package, stand up one gated instance, autoscale to
+  zero, keep the cinematic as the fallback.
