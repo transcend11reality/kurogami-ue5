@@ -107,7 +107,7 @@ Two mechanisms:
   instance values, so the human finishes any nodes Python cannot place. Verify: py_compile clean;
   recipe doc lists all six materials with parameters and no em dashes.
 
-- [ ] **A6 Sequencer cinematic script.**
+- [x] **A6 Sequencer cinematic script.**
   `Scripts/Python/04_sequence.py`: create a Level Sequence `KG_Showpiece`, add a Cine Camera Actor,
   keyframe a 60 to 120 second move through the vantage points in config (establishing wide, hero
   push-ins, slow reveal), add a Camera Cuts track bound to the camera, set DoF and a subtle shake.
