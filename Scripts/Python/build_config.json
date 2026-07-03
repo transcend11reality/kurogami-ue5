@@ -1,0 +1,25 @@
+{
+  "region": {
+    "id": "brickell_dusk",
+    "name": "Space / Sophia Nexus (Brickell skyline at dusk)",
+    "layout_data_path": "Content/Data/brickell_layout.json",
+    "layout_source_note": "Filled by task A2 from the web build's brickell-city.html. Empty until that source is provided to this repo."
+  },
+  "coordinate_units": "centimeters (Unreal Engine default)",
+  "palette": {
+    "obsidian": null,
+    "navy": null,
+    "teal": null,
+    "gold": null,
+    "violet": null,
+    "crimson": null,
+    "cyan": null
+  },
+  "sun": {
+    "pitch_deg": null,
+    "yaw_deg": null,
+    "temperature_kelvin": null,
+    "intensity_lux": null
+  },
+  "camera_vantage_points": []
+}

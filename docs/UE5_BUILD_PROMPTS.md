@@ -67,7 +67,7 @@ Two mechanisms:
 
 ## PHASE A: Scriptable scaffold (Claude can grind these)
 
-- [ ] **A1 Python automation framework.**
+- [x] **A1 Python automation framework.**
   Create `Scripts/Python/` with: `build_config.json` (empty-but-typed skeleton for coordinates,
   palette hex list, sun pitch/yaw/temperature, and an array of camera vantage points),
   `ue_common.py` (guarded `import unreal`, a logger, an idempotency helper that finds+deletes actors
