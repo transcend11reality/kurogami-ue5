@@ -136,7 +136,7 @@ Two mechanisms:
   never trademarked reproductions. Seed it with headers and one example row. Verify: no em dashes;
   table renders.
 
-- [ ] **A10 Web player wiring check.**
+- [x] **A10 Web player wiring check.**
   Confirm `web/public/player.html` references `cinematic.mp4` and `poster.jpg`, start the server
   (`cd web && npm start`), and verify it serves player.html and 404s cleanly for the not-yet-rendered
   video. Add a short `web/public/README.md` noting the two files the render drops here. Verify:
