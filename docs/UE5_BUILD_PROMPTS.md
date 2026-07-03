@@ -99,7 +99,7 @@ Two mechanisms:
   A few `KG_neon_*` rect lights for accent. Idempotent by tag. Verify: py_compile clean; the dry-run
   prints each light with its key parameters.
 
-- [ ] **A5 Master materials recipe.**
+- [x] **A5 Master materials recipe.**
   Material graph authoring via Python is verbose and brittle, so deliver TWO things:
   `Scripts/Python/03_materials.py` that creates material ASSETS and sets scalar/vector parameters
   where the API allows, AND `docs/MATERIALS_RECIPE.md` giving the exact node graph for M_Glass
