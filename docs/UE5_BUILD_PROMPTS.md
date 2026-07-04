@@ -55,7 +55,7 @@ Two mechanisms:
 
 ## PHASE 0: Project creation
 
-- [ ] **G0 [HUMAN GATE] Create the UE project.**
+- [x] **G0 [HUMAN GATE] Create the UE project.**
   In the Epic Games Launcher (installed to Bobo 1), create a new **Blueprint** project (Games >
   Blank, Starter Content OFF, Raytracing off, target Desktop) named exactly `Kurogami`, created INTO
   `/Volumes/Bobo 1/kurogami-ue5/` so `Kurogami.uproject`, `Content/`, `Config/`, `Saved/` land beside
