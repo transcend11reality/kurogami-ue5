@@ -24,7 +24,7 @@
 			"Enabled": true
 		},
 		{
-			"Name": "MovieRenderPipelineAdditionalRenderPasses",
+			"Name": "MoviePipelineMaskRenderPass",
 			"Enabled": true
 		}
 	]

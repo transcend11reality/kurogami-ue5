@@ -33,7 +33,7 @@ REQUIRED_PLUGINS = [
     "PythonScriptPlugin",
     "EditorScriptingUtilities",
     "MovieRenderPipeline",
-    "MovieRenderPipelineAdditionalRenderPasses",
+    "MoviePipelineMaskRenderPass",
 ]
 
 
