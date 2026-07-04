@@ -117,7 +117,7 @@ def apply_plan(plan):
     transform_track = camera_binding.add_track(unreal.MovieScene3DTransformTrack)
     transform_section = transform_track.add_section()
     transform_section.set_range_seconds(0.0, plan["duration_sec"])
-    channels = {c.channel_name: c for c in transform_section.get_channels()}
+    channels = {c.channel_name: c for c in transform_section.get_all_channels()}
 
     axis_map = {
         "Location.X": lambda v: v["location"][0], "Location.Y": lambda v: v["location"][1],
