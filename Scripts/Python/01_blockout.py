@@ -17,7 +17,15 @@ import json
 import os
 import sys
 
-sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+try:
+    _SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+except NameError:
+    # __file__ is undefined when a script is run via exec(open(...).read()) in the
+    # in-editor Python console, instead of as a real file (the -script= CLI flag or
+    # standalone python3 both set __file__ correctly). Fall back to the project dir.
+    import unreal
+    _SCRIPT_DIR = os.path.join(unreal.Paths.project_dir(), "Scripts", "Python")
+sys.path.insert(0, _SCRIPT_DIR)
 import ue_common as kg
 
 TAG = "KG_blockout_"
