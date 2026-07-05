@@ -142,6 +142,17 @@ Two mechanisms:
   video. Add a short `web/public/README.md` noting the two files the render drops here. Verify:
   `node --check web/server.js`; server responds 200 on `/` and the player references both filenames.
 
+- [x] **A11 Procedural city fill script.**
+  `Scripts/Python/05_city_fill.py`: reads the real road grid and landmark buildings from
+  `Content/Data/brickell_layout.json`, then fills the empty blocks between roads with grey-box
+  filler buildings, skipping water and any block that overlaps a named landmark's clearance
+  radius. Uses a fixed random seed (not true per-page-load randomness like the original web
+  source) so it is deterministic and idempotent, same as every other build script. Fills the
+  "generic background city" gap task A2 explicitly left unextracted. No materials, same grey-box
+  scope as the rest of Phase A; task B2 replaces these with real Fab meshes same as the named
+  buildings. Verify: py_compile clean; dry-run is byte-identical across repeated runs (fixed
+  seed); skips water-side and landmark-adjacent blocks correctly.
+
 ## PHASE B: Human-in-editor build (Claude stops, you drive)
 
 - [x] **B1 [HUMAN GATE] Run the scaffold scripts in order.**
