@@ -16,6 +16,7 @@ here with enough detail that a legal review does not have to guess.
 | Asset name | Source | License | Date added | Used in |
 |---|---|---|---|---|
 | _example: Megascans_Concrete_Facade_A_ | _example: Fab (Quixel Megascans)_ | _example: Free, UE-only per Fab EULA_ | _example: YYYY-MM-DD_ | _example: M_Concrete master material (docs/MATERIALS_RECIPE.md), Brickell tower facades_ |
+| Futuristic_Skyscraper | Fab, creator MOJackal | Free, CC BY 4.0 (attribution required, credit MOJackal) | 2026-07-04 | Original design, generic modern glass tower, not a homage to any real building; swapped onto KG_blockout_building_four_seasons_miami |
 
 That row is a template, not a real entry; no assets have been imported yet (Content/ does not exist
 until task G0 creates the UE project). Replace it with the first real asset the moment one is added,
