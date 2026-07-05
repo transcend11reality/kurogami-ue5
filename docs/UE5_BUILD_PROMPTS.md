@@ -144,7 +144,7 @@ Two mechanisms:
 
 ## PHASE B: Human-in-editor build (Claude stops, you drive)
 
-- [ ] **B1 [HUMAN GATE] Run the scaffold scripts in order.**
+- [x] **B1 [HUMAN GATE] Run the scaffold scripts in order.**
   Run A3, A4, A5, A6, A8 via the run command in `Scripts/Python/README.md` (or paste each into the
   editor Python console). After each, eyeball the viewport. Report anything that errored so Claude can
   fix the script. Success: the blockout, dusk lighting, materials, and a playable Sequencer camera all
