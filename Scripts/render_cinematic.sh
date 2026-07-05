@@ -14,8 +14,8 @@
 #                     export UE_EDITOR_CMD="/Volumes/Bobo 1/UE_5.5/Engine/Binaries/Mac/UnrealEditor-Cmd"
 #
 # Optional environment variables (sensible defaults shown):
-#   MAP_PATH            Persistent level to load (default: /Game/Maps/L_Brickell_Dusk). Update this
-#                        once the human names the actual map created in task G0.
+#   MAP_PATH            Persistent level to load (default: /Game/L_Brickell_Dusk). Update this
+#                        if the actual map created in task G0 moves to a different name or location.
 #   MRQ_PRESET_PATH      Saved MoviePipelineQueue asset (default: /Game/Cinematics/KG_Showpiece_MRQ_Preset)
 #   RENDER_OUTPUT_DIR    Where MRQ writes the image sequence (default: Saved/Render/KG_Showpiece)
 #   RENDER_FRAMERATE     Encode framerate (default: 30)
@@ -30,7 +30,7 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REPO_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
 UPROJECT="$REPO_ROOT/Kurogami.uproject"
 
-MAP_PATH="${MAP_PATH:-/Game/Maps/L_Brickell_Dusk}"
+MAP_PATH="${MAP_PATH:-/Game/L_Brickell_Dusk}"
 MRQ_PRESET_PATH="${MRQ_PRESET_PATH:-/Game/Cinematics/KG_Showpiece_MRQ_Preset}"
 RENDER_OUTPUT_DIR="${RENDER_OUTPUT_DIR:-$REPO_ROOT/Saved/Render/KG_Showpiece}"
 RENDER_FRAMERATE="${RENDER_FRAMERATE:-30}"
@@ -63,7 +63,7 @@ if ! command -v ffmpeg >/dev/null 2>&1; then
   fail "ffmpeg is not installed. Install it first, for example: brew install ffmpeg"
 fi
 
-if [ "$MAP_PATH" = "/Game/Maps/L_Brickell_Dusk" ]; then
+if [ "$MAP_PATH" = "/Game/L_Brickell_Dusk" ]; then
   echo "NOTE: using the default MAP_PATH ($MAP_PATH). Set the MAP_PATH environment variable if the" \
        "actual level created in task G0 has a different name or location." >&2
 fi
