@@ -54,6 +54,80 @@
   <div class="act"><button data-f>F</button><button data-e>E</button></div>
 </div>
 
+<!-- KUROGAMI_LAYOUT_DATA_START -->
+<script id="kurogami-layout-data" type="application/json">
+{
+  "landmarks": [
+    {
+      "name": "Brickell City Centre",
+      "x": 0.0,
+      "z": -40.0,
+      "h": 88.0,
+      "kind": "glass",
+      "note": "Open-air luxury mall and towers, the anchor of Brickell (701 S Miami Ave)."
+    },
+    {
+      "name": "Mary Brickell Village",
+      "x": -86.0,
+      "z": -30.0,
+      "h": 18.0,
+      "kind": "brick",
+      "note": "Low-rise dining and nightlife block just west (901 S Miami Ave)."
+    },
+    {
+      "name": "Four Seasons Miami",
+      "x": 120.0,
+      "z": 110.0,
+      "h": 150.0,
+      "kind": "glass2",
+      "note": "One of the tallest towers on Brickell Avenue, south end (1435 Brickell Ave)."
+    },
+    {
+      "name": "Dua Miami",
+      "x": -30.0,
+      "z": 70.0,
+      "h": 92.0,
+      "kind": "glass",
+      "note": "S Miami Avenue tower (1300 S Miami Ave)."
+    },
+    {
+      "name": "Brickell Metrorail",
+      "x": -150.0,
+      "z": 120.0,
+      "h": 14.0,
+      "kind": "concrete",
+      "note": "Metrorail transit hub on the southwest edge."
+    },
+    {
+      "name": "Simpson Park",
+      "x": -150.0,
+      "z": 180.0,
+      "h": 0,
+      "kind": "park",
+      "note": "Rare hammock green space, the map's only park. Ground plane only in the source, no building mass; add Fab foliage in task B2."
+    },
+    {
+      "name": "Brickell Ave Bridge",
+      "x": 150.0,
+      "z": -250.0,
+      "h": 0,
+      "kind": "bridge",
+      "note": "Drawbridge crossing the Miami River into downtown. Bespoke deck/pillar geometry in the source, not a simple box; model separately in task B2."
+    }
+  ],
+  "roads": [
+    -240.0,
+    -160.0,
+    -80.0,
+    0.0,
+    80.0,
+    160.0,
+    200.0
+  ]
+}
+</script>
+<!-- KUROGAMI_LAYOUT_DATA_END -->
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script>
 (function(){
@@ -68,17 +142,13 @@ var driving=false,carX=26,carZ=-40,carHeading=0,carSpeed=0;
 var HALF=280,WATER_X=206,RIVER_Z=-250;
 var interactables=[],traffic=[],peds=[],palms=[],lights=[],toastT=null;
 var lightPhase=0,lightTimer=0;
-var ROADS=[-240,-160,-80,0,80,160,200];
-
-var LM=[
- {name:"Brickell City Centre",x:0,z:-40,h:88,kind:"glass",note:"Open-air luxury mall and towers, the anchor of Brickell (701 S Miami Ave)."},
- {name:"Mary Brickell Village",x:-86,z:-30,h:18,kind:"brick",note:"Low-rise dining and nightlife block just west (901 S Miami Ave)."},
- {name:"Four Seasons Miami",x:120,z:110,h:150,kind:"glass2",note:"One of the tallest towers on Brickell Avenue, south end (1435 Brickell Ave)."},
- {name:"Dua Miami",x:-30,z:70,h:92,kind:"glass",note:"S Miami Avenue tower (1300 S Miami Ave)."},
- {name:"Brickell Metrorail",x:-150,z:120,h:14,kind:"concrete",note:"Metrorail transit hub on the southwest edge."},
- {name:"Simpson Park",x:-150,z:180,h:0,kind:"park",note:"Rare hammock green space, the map's only park."},
- {name:"Brickell Ave Bridge",x:150,z:-250,h:0,kind:"bridge",note:"Drawbridge crossing the Miami River into downtown."}
-];
+// Layout data (landmark positions, road grid) is embedded above in the
+// #kurogami-layout-data JSON block, kept in sync with Content/Data/brickell_layout.json
+// (the UE5 project's own layout source) via Scripts/sync_web_layout.py, so both versions of
+// Brickell represent the exact same city instead of maintaining two hand-typed copies.
+var LAYOUT_DATA=JSON.parse(document.getElementById("kurogami-layout-data").textContent);
+var ROADS=LAYOUT_DATA.roads;
+var LM=LAYOUT_DATA.landmarks;
 
 function mat(c,e,r,m){return new THREE.MeshStandardMaterial({color:c,emissive:e||0x000000,emissiveIntensity:e?0.7:0,roughness:r==null?0.85:r,metalness:m==null?0.1:m});}
 function box(w,h,d,m){return new THREE.Mesh(new THREE.BoxGeometry(w,h,d),m);}
