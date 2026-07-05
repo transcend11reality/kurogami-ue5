@@ -136,7 +136,9 @@ def apply_plan(plan):
     cut_section = cut_track.add_section()
     cut_section.set_range_seconds(0.0, plan["duration_sec"])
     binding_guid = unreal.MovieSceneBindingExtensions.get_id(camera_binding)
-    cut_section.set_editor_property("camera_binding_id", unreal.MovieSceneObjectBindingID(guid=binding_guid))
+    binding_id = unreal.MovieSceneObjectBindingID()
+    binding_id.set_editor_property("guid", binding_guid)
+    cut_section.set_editor_property("camera_binding_id", binding_id)
 
     unreal.EditorAssetLibrary.save_loaded_asset(sequence)
     kg.log("sequence: %s created, %d vantage point(s), %.1fs" % (
